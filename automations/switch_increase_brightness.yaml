@@ -1,0 +1,17 @@
+alias: "Trådfri Switch 01- Helligkeit (+10%) "
+description: ""
+trigger:
+  - platform: device
+    domain: mqtt
+    device_id: db2d49247daec31973f19f2cdf236a94
+    type: action
+    subtype: brightness_move_up
+    discovery_id: 0x70ac08fffe68a0f6 action_brightness_move_up
+condition: []
+action:
+  - service: light.turn_on
+    data:
+      brightness_step_pct: 10
+    target:
+      entity_id: light.osram_flex_rgbw_01
+mode: single
