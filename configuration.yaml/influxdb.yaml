@@ -1,0 +1,10 @@
+# saving data to influxdb
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: !secret influxdb_user
+  password: !secret influxdb_password
+  max_retries: 3
+  measurement_attr: entity_id
+  default_measurement: state
