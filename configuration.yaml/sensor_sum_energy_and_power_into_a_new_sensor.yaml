@@ -1,0 +1,26 @@
+# Template Configuration
+template:
+  - sensor:
+      - name: "Energie Gesamt"
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state: >
+          {% set ns = namespace(states=[]) %}
+          {% for s in states.sensor %}
+            {% if s.object_id.startswith('verbrauchszahler_') and s.object_id.endswith('_taglich') %}
+              {% set ns.states = ns.states + [ s.state | float ] %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.states | sum | round(3) }}
+  - sensor:
+      - name: "Leistung Gesamt"
+        unit_of_measurement: "W"
+        device_class: power
+        state: >
+          {% set ns = namespace(states=[]) %}
+            {% for s in states.sensor %}
+              {% if s.object_id.endswith('_power') %}
+                {% set ns.states = ns.states + [ s.state | float ] %}
+              {% endif %}
+            {% endfor %}
+            {{ ns.states | sum | round(3) }}
