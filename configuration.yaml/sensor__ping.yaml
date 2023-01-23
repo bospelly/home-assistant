@@ -1,0 +1,6 @@
+# Ping Probe
+binary_sensor:
+  - platform: ping
+    name: icmp-check-internet
+    host: 8.8.8.8
+    scan_interval: 15
