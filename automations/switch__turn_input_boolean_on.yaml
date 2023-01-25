@@ -1,3 +1,5 @@
+#https://www.home-assistant.io/integrations/input_boolean/
+
 alias: Trådfri Switch 01 - ON
 description: ""
 trigger:
