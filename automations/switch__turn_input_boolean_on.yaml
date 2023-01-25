@@ -1,0 +1,20 @@
+alias: Trådfri Switch 01 - ON
+description: ""
+trigger:
+  - platform: device
+    domain: mqtt
+    device_id: db2d49247daec31973f19f2cdf236a94
+    type: action
+    subtype: "on"
+    discovery_id: 0x70ac08fffe68a0f6 action_on
+condition: []
+action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.osram_flex_rgbw_01
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.umschalten_test
+mode: single
